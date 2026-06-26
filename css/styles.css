@@ -1,0 +1,189 @@
+/* =====================================================================
+   IMAM HUSSAIN COMMUNITY APP — DESIGN SYSTEM
+   ===================================================================== */
+
+:root {
+  /* Brand */
+  --green-900: #0A1F12;
+  --green-800: #0D2818;
+  --green-700: #123322;
+  --green-600: #1B3A2D;
+  --green-500: #245040;
+  --gold:      #D4AF37;
+  --gold-soft: #E6C964;
+  --gold-dim:  rgba(212,175,55,0.18);
+
+  /* Surfaces */
+  --bg:        #0A1F12;
+  --surface:   rgba(255,255,255,0.05);
+  --surface-2: rgba(255,255,255,0.08);
+  --border:    rgba(212,175,55,0.16);
+  --border-2:  rgba(255,255,255,0.08);
+
+  /* Text */
+  --text:      #F4F1E8;
+  --text-dim:  #9DB3A4;
+  --text-faint:#6E8478;
+
+  /* System */
+  --radius:    18px;
+  --radius-sm: 12px;
+  --shadow:    0 10px 40px rgba(0,0,0,0.45);
+  --nav-h:     64px;
+  --maxw:      460px;
+  --ease:      cubic-bezier(.4,0,.2,1);
+
+  --safe-top:    env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, var(--green-700), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  -webkit-user-select: none; user-select: none;
+  overscroll-behavior-y: none;
+  line-height: 1.5;
+}
+
+/* ---- App frame ----------------------------------------------------- */
+#app {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- App bar ------------------------------------------------------- */
+.appbar {
+  position: sticky; top: 0; z-index: 30;
+  padding: calc(var(--safe-top) + 12px) 18px 12px;
+  display: flex; align-items: center; gap: 12px;
+  background: linear-gradient(180deg, rgba(10,31,18,0.96), rgba(10,31,18,0.78) 70%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.appbar .title { font-size: 1.15rem; font-weight: 700; letter-spacing: .2px; }
+.appbar .back {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--surface); border: 1px solid var(--border-2);
+  color: var(--gold); font-size: 1.1rem; cursor: pointer;
+}
+.appbar .spacer { flex: 1; }
+.appbar .back[hidden] { display: none; }
+[hidden] { display: none !important; }
+
+/* ---- View container ------------------------------------------------ */
+#view {
+  flex: 1;
+  padding: 4px 16px calc(var(--nav-h) + var(--safe-bottom) + 24px);
+  animation: viewIn .28s var(--ease);
+}
+@keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---- Bottom navigation -------------------------------------------- */
+.navbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  max-width: var(--maxw); margin: 0 auto;
+  height: calc(var(--nav-h) + var(--safe-bottom));
+  padding-bottom: var(--safe-bottom);
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  background: rgba(9,26,16,0.92);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid var(--border);
+}
+.navbtn {
+  background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 3px; color: var(--text-faint); font-size: .66rem; font-weight: 600;
+  transition: color .2s var(--ease);
+}
+.navbtn svg { width: 23px; height: 23px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.navbtn.active { color: var(--gold); }
+.navbtn.active svg { filter: drop-shadow(0 2px 8px rgba(212,175,55,.4)); }
+
+/* ---- Cards & primitives ------------------------------------------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.card.gold { border-color: var(--border); background: linear-gradient(160deg, rgba(212,175,55,.10), var(--surface)); }
+
+.section-title {
+  font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin: 22px 4px 12px;
+}
+.muted { color: var(--text-dim); }
+.faint { color: var(--text-faint); }
+.center { text-align: center; }
+
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--gold-dim); color: var(--gold-soft);
+  border: 1px solid var(--border);
+  padding: 4px 12px; border-radius: 999px; font-size: .76rem; font-weight: 600;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--gold); color: var(--green-900);
+  border: none; border-radius: 12px; padding: 13px 18px;
+  font-size: .95rem; font-weight: 700; cursor: pointer;
+  transition: transform .12s var(--ease), filter .2s;
+}
+.btn:active { transform: scale(.97); }
+.btn.ghost { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+.btn.block { width: 100%; }
+
+/* ---- Grid of feature tiles ---------------------------------------- */
+.tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tile {
+  background: var(--surface); border: 1px solid var(--border-2);
+  border-radius: var(--radius); padding: 18px 16px; cursor: pointer;
+  display: flex; flex-direction: column; gap: 10px;
+  transition: transform .15s var(--ease), border-color .2s, background .2s;
+}
+.tile:active { transform: scale(.97); }
+.tile .ico {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: var(--gold-dim); color: var(--gold);
+}
+.tile .ico svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; }
+.tile .t-name { font-weight: 700; font-size: 1rem; }
+.tile .t-desc { font-size: .78rem; color: var(--text-dim); }
+
+/* ---- Loading / empty ---------------------------------------------- */
+.spinner {
+  width: 32px; height: 32px; margin: 40px auto; border-radius: 50%;
+  border: 3px solid var(--border); border-top-color: var(--gold);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.empty { text-align: center; color: var(--text-dim); padding: 48px 20px; }
+.empty .em-ico { font-size: 2.4rem; margin-bottom: 10px; opacity: .5; }
+
+/* ---- Utilities ----------------------------------------------------- */
+.row { display: flex; align-items: center; gap: 12px; }
+.between { justify-content: space-between; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}
+.divider { height: 1px; background: var(--border-2); margin: 16px 0; }
+
+/* Arabic / RTL helpers */
+.ar { font-family: 'Traditional Arabic','Scheherazade New','Amiri',serif; direction: rtl; line-height: 2; }
+
+/* Hide scrollbars but keep scroll */
+::-webkit-scrollbar { width: 0; height: 0; }

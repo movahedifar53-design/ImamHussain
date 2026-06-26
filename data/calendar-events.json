@@ -1,0 +1,63 @@
+{
+  "_note": "Important Shia days by Hijri month (m) and day (d). Dates follow commonly-used Shia narrations; some events have variant dates. Edit freely. type: martyrdom | birth | eid | event.",
+  "events": [
+    { "m": 1,  "d": 1,  "type": "event",     "title": "Beginning of Muharram / Islamic New Year" },
+    { "m": 1,  "d": 9,  "type": "martyrdom", "title": "Tasua — eve of Ashura" },
+    { "m": 1,  "d": 10, "type": "martyrdom", "title": "Ashura — Martyrdom of Imam Hussain (a) and his companions" },
+    { "m": 1,  "d": 12, "type": "event",     "title": "Burial of the martyrs of Karbala" },
+    { "m": 1,  "d": 25, "type": "martyrdom", "title": "Martyrdom of Imam al-Sajjad (a)" },
+
+    { "m": 2,  "d": 7,  "type": "birth",     "title": "Birth of Imam Musa al-Kazim (a)" },
+    { "m": 2,  "d": 20, "type": "event",     "title": "Arba'een of Imam Hussain (a)" },
+    { "m": 2,  "d": 28, "type": "martyrdom", "title": "Demise of Prophet Muhammad (s) & Martyrdom of Imam Hasan (a)" },
+    { "m": 2,  "d": 30, "type": "martyrdom", "title": "Martyrdom of Imam al-Reza (a)" },
+
+    { "m": 3,  "d": 8,  "type": "martyrdom", "title": "Martyrdom of Imam Hasan al-Askari (a)" },
+    { "m": 3,  "d": 9,  "type": "eid",       "title": "First day of the Imamate of Imam al-Mahdi (aj)" },
+    { "m": 3,  "d": 17, "type": "birth",     "title": "Birth of Prophet Muhammad (s) & Imam al-Sadiq (a)" },
+
+    { "m": 4,  "d": 8,  "type": "birth",     "title": "Birth of Imam Hasan al-Askari (a)" },
+    { "m": 4,  "d": 10, "type": "event",     "title": "Demise of Lady Fatima al-Masuma (a)" },
+
+    { "m": 5,  "d": 5,  "type": "birth",     "title": "Birth of Lady Zaynab (a)" },
+    { "m": 5,  "d": 13, "type": "martyrdom", "title": "Martyrdom of Lady Fatima al-Zahra (a) — first narration" },
+
+    { "m": 6,  "d": 3,  "type": "martyrdom", "title": "Martyrdom of Lady Fatima al-Zahra (a)" },
+    { "m": 6,  "d": 20, "type": "birth",     "title": "Birth of Lady Fatima al-Zahra (a)" },
+
+    { "m": 7,  "d": 1,  "type": "birth",     "title": "Birth of Imam Muhammad al-Baqir (a)" },
+    { "m": 7,  "d": 3,  "type": "martyrdom", "title": "Martyrdom of Imam Ali al-Hadi (a)" },
+    { "m": 7,  "d": 10, "type": "birth",     "title": "Birth of Imam Muhammad al-Jawad (a)" },
+    { "m": 7,  "d": 13, "type": "birth",     "title": "Birth of Imam Ali (a) in the Holy Ka'bah" },
+    { "m": 7,  "d": 15, "type": "event",     "title": "Demise of Lady Zaynab (a)" },
+    { "m": 7,  "d": 25, "type": "martyrdom", "title": "Martyrdom of Imam Musa al-Kazim (a)" },
+    { "m": 7,  "d": 27, "type": "eid",       "title": "Mab'ath — Prophetic Mission of Muhammad (s)" },
+
+    { "m": 8,  "d": 3,  "type": "birth",     "title": "Birth of Imam Hussain (a)" },
+    { "m": 8,  "d": 4,  "type": "birth",     "title": "Birth of Abul-Fadl al-Abbas (a)" },
+    { "m": 8,  "d": 5,  "type": "birth",     "title": "Birth of Imam al-Sajjad (a)" },
+    { "m": 8,  "d": 11, "type": "birth",     "title": "Birth of Ali al-Akbar (a)" },
+    { "m": 8,  "d": 15, "type": "eid",       "title": "Birth of Imam al-Mahdi (aj) — Nimah Sha'ban" },
+
+    { "m": 9,  "d": 10, "type": "event",     "title": "Demise of Lady Khadija (a)" },
+    { "m": 9,  "d": 15, "type": "birth",     "title": "Birth of Imam Hasan al-Mujtaba (a)" },
+    { "m": 9,  "d": 19, "type": "martyrdom", "title": "Striking of Imam Ali (a) in the mihrab" },
+    { "m": 9,  "d": 21, "type": "martyrdom", "title": "Martyrdom of Imam Ali (a)" },
+    { "m": 9,  "d": 23, "type": "event",     "title": "Laylat al-Qadr" },
+
+    { "m": 10, "d": 1,  "type": "eid",       "title": "Eid al-Fitr" },
+    { "m": 10, "d": 8,  "type": "event",     "title": "Demolition of the shrines of Jannat al-Baqi" },
+    { "m": 10, "d": 25, "type": "martyrdom", "title": "Martyrdom of Imam Ja'far al-Sadiq (a)" },
+
+    { "m": 11, "d": 11, "type": "birth",     "title": "Birth of Imam Ali al-Reza (a)" },
+    { "m": 11, "d": 29, "type": "martyrdom", "title": "Martyrdom of Imam Muhammad al-Jawad (a)" },
+
+    { "m": 12, "d": 1,  "type": "event",     "title": "Marriage of Imam Ali (a) & Lady Fatima (a)" },
+    { "m": 12, "d": 7,  "type": "martyrdom", "title": "Martyrdom of Imam Muhammad al-Baqir (a)" },
+    { "m": 12, "d": 9,  "type": "event",     "title": "Day of Arafah" },
+    { "m": 12, "d": 10, "type": "eid",       "title": "Eid al-Adha" },
+    { "m": 12, "d": 15, "type": "birth",     "title": "Birth of Imam Ali al-Hadi (a)" },
+    { "m": 12, "d": 18, "type": "eid",       "title": "Eid al-Ghadir" },
+    { "m": 12, "d": 24, "type": "eid",       "title": "Day of Mubahala" }
+  ]
+}
