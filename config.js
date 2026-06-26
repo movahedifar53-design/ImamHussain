@@ -31,7 +31,9 @@ export const CONFIG = {
 
   // --- Live shrine stream ---------------------------------------------------
   // YouTube video OR channel id for the Karbala live stream.
-  liveYouTubeVideoId: "",        // e.g. a specific live video id
+  // Default = Karbala TV (the Holy Shrine's official channel, @karbalachannel).
+  // If the stream ever ends, replace with the current live video id.
+  liveYouTubeVideoId: "0yqAqckenig",
   liveYouTubeChannelId: "",      // fallback: channel's current live
   liveTitle: "Imam Hussain Holy Shrine — Karbala (Live)",
 
