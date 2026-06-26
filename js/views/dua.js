@@ -1,9 +1,12 @@
+import { CONFIG } from "../../config.js";
+
 export const title = "Dua & Ziyarat";
 
-// The full Dua & Ziyarat app is bundled under /dua and shown in a frame so all
-// of its content (7 duas, Arabic/Persian toggle, audio) works unchanged.
+// The full Dua & Ziyarat app (7 duas, Arabic/Persian toggle, audio) is shown in
+// a frame. Uses the standalone deployment when configured, else the bundled copy.
 export function render(el) {
-  el.innerHTML = `<iframe class="frame-full" src="dua/index.html" title="Dua & Ziyarat"></iframe>`;
+  const src = CONFIG.duaUrl || "dua/index.html";
+  el.innerHTML = `<iframe class="frame-full" src="${src}" title="Dua & Ziyarat"></iframe>`;
   ensureFrameCss();
 }
 

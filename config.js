@@ -37,6 +37,11 @@ export const CONFIG = {
   liveYouTubeChannelId: "",      // fallback: channel's current live
   liveTitle: "Imam Hussain Holy Shrine — Karbala (Live)",
 
+  // --- Dua & Ziyarat --------------------------------------------------------
+  // The Dua app (with audio) is served from its own deployment to keep this
+  // repo lean. Falls back to the bundled copy if left blank.
+  duaUrl: "https://movahedifar53-design.github.io/DuaZiyarat-PWA/",
+
   // --- Shia calendar --------------------------------------------------------
   // ±days adjustment if the centre follows moon-sighting that differs
   // from the calculated (tabular) Hijri date.
