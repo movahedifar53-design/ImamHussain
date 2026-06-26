@@ -28,17 +28,32 @@ export const CONFIG = {
   // Columns expected: Date | Time | Title | Location | Details | Image
   programsCsvUrl: "",            // <-- PASTE PUBLISHED CSV URL HERE
 
+  // Until the Sheet is connected (or alongside it), events can be listed here.
+  // date: "YYYY-MM-DD". Past events are hidden automatically.
+  programs: [
+    {
+      date: "2026-07-02",
+      time: "7:30 PM",
+      title: "Dua Kumayl",
+      location: "",
+      details: "Weekly recitation of Dua Kumayl. All are welcome.",
+      image: "",
+    },
+  ],
+
   // --- Live shrine stream ---------------------------------------------------
-  // In-app video player (no YouTube). Paste a direct video stream URL you trust
-  // (HLS .m3u8 preferred; .mp4 also works) to enable the Live tab. Leave blank
-  // to show a tasteful "coming soon" placeholder.
+  // Option A: a YouTube live video id (just the id from the watch?v=... link).
+  // Option B: a direct video stream URL (HLS .m3u8 / .mp4) for an in-app player.
+  // Set one; leave both blank for a "coming soon" placeholder.
+  liveYouTubeVideoId: "EpT7MFZgCow",
   liveStreamUrl: "",
   liveTitle: "Imam Hussain Holy Shrine — Karbala (Live)",
 
   // --- Dua & Ziyarat --------------------------------------------------------
-  // The Dua app (with audio) is served from its own deployment to keep this
-  // repo lean. Falls back to the bundled copy if left blank.
-  duaUrl: "https://movahedifar53-design.github.io/DuaZiyarat-PWA/",
+  // Uses the app's own black/red/white themed copy under /dua/ (audio streams
+  // from the standalone Dua deployment). The standalone green app is separate
+  // and untouched. Set a URL here only to override with an external Dua app.
+  duaUrl: "",
 
   // --- Shia calendar --------------------------------------------------------
   // ±days adjustment if the centre follows moon-sighting that differs

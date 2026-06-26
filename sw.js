@@ -4,7 +4,7 @@
 // the page auto-reloads (see controllerchange handler in app.js).
 // Strategy: network-first for same-origin requests (content is always fresh
 // when online), cache fallback for offline. Audio/externals bypass.
-const VERSION = "2026-06-26-3";
+const VERSION = "2026-06-26-4";
 const CACHE = "ih-" + VERSION;
 const CORE = [
   "./", "index.html", "manifest.json",

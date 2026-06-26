@@ -6,16 +6,12 @@ export const title = "Programs";
 
 export async function render(el) {
   injectCss();
-  if (!CONFIG.programsCsvUrl) {
-    el.innerHTML = setupNotice();
-    return;
-  }
   el.innerHTML = `<div class="spinner"></div>`;
   try {
     const all = await loadPrograms(true);
     const up = upcomingPrograms(all);
     if (!up.length) {
-      el.innerHTML = `<div class="empty"><div class="em-ico">📅</div>No upcoming programs.<br><span class="faint">Check back soon.</span></div>`;
+      el.innerHTML = `<div class="empty"><div class="em-ico">📅</div>No upcoming programs.<br><span class="faint">Check back soon, inshaAllah.</span></div>`;
       return;
     }
     el.innerHTML = `<div class="stack">${up.map(card).join("")}</div>`;
@@ -32,18 +28,6 @@ function card(p) {
       <div class="pg-title">${p.title}</div>
       ${p.location?`<div class="muted pg-meta">${ICON.pin} ${p.location}</div>`:""}
       ${p.details?`<div class="pg-det">${p.details}</div>`:""}
-    </div>
-  </div>`;
-}
-
-function setupNotice() {
-  return `<div class="empty">
-    <div class="em-ico">📣</div>
-    Programs are not connected yet.
-    <div class="faint" style="margin-top:8px;font-size:.85rem;line-height:1.6">
-      Publish a Google Sheet to the web as CSV with columns<br>
-      <b>Date · Time · Title · Location · Details · Image</b><br>
-      then paste the link into <code>config.js</code>.
     </div>
   </div>`;
 }

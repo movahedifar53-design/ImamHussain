@@ -51,13 +51,32 @@ function parseDate(s) {
   return isNaN(d) ? null : d;
 }
 
+// Normalise a config.programs entry to the same shape as a CSV row.
+function fromConfig(list) {
+  return (list || []).map(p => ({
+    rawDate: p.date || "",
+    date: parseDate((p.date || "").trim()),
+    time: (p.time || "").trim(),
+    title: (p.title || "").trim(),
+    location: (p.location || "").trim(),
+    details: (p.details || "").trim(),
+    image: (p.image || "").trim(),
+  })).filter(p => p.title);
+}
+
 export async function loadPrograms(force = false) {
   if (_cache && !force) return _cache;
-  if (!CONFIG.programsCsvUrl) { _cache = []; return _cache; }
-  const res = await fetch(CONFIG.programsCsvUrl, { cache: "no-store" });
-  if (!res.ok) throw new Error("Could not load programs");
-  const text = await res.text();
-  _cache = toObjects(parseCSV(text));
+  const local = fromConfig(CONFIG.programs);
+  if (!CONFIG.programsCsvUrl) { _cache = local; return _cache; }
+  try {
+    const res = await fetch(CONFIG.programsCsvUrl, { cache: "no-store" });
+    if (!res.ok) throw new Error("Could not load programs");
+    const sheet = toObjects(parseCSV(await res.text()));
+    // Sheet events take precedence; local entries fill in alongside.
+    _cache = [...sheet, ...local];
+  } catch {
+    _cache = local;     // fall back to in-app list if the Sheet fails
+  }
   return _cache;
 }
 

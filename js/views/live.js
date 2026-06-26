@@ -4,7 +4,24 @@ export const title = "Live Shrine";
 
 export function render(el) {
   const url = CONFIG.liveStreamUrl;
+  const ytId = CONFIG.liveYouTubeVideoId;
   injectCss();
+
+  // Option A: YouTube live embed.
+  if (ytId) {
+    el.innerHTML = `
+      <div class="live-wrap">
+        <div class="live-frame-box">
+          <iframe class="live-video" src="https://www.youtube.com/embed/${ytId}?autoplay=1&rel=0&playsinline=1"
+            title="${CONFIG.liveTitle}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="live-meta">
+          <div class="live-dot-row"><span class="live-dot"></span>${CONFIG.liveTitle}</div>
+          <p class="muted live-note">Live from the Holy Shrine. If the player does not start, check your connection.</p>
+        </div>
+      </div>`;
+    return;
+  }
 
   if (!url) {
     el.innerHTML = `
