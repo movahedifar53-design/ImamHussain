@@ -11,7 +11,8 @@ let timer = null;
 
 export async function render(el) {
   if (timer) { clearInterval(timer); timer = null; }
-  const cityId = localStorage.getItem("ih-city") || CONFIG.defaultCity;
+  let cityId = localStorage.getItem("ih-city") || CONFIG.defaultCity;
+  if (!CONFIG.prayerCities.some(c => c.id === cityId)) cityId = CONFIG.defaultCity;
 
   el.innerHTML = `
     <section class="hero card gold">

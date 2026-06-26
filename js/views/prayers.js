@@ -10,13 +10,13 @@ const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Satur
 const SOURCE = {
   birmingham: 'Fajr: openfajr.org · others: najaf.org',
   london:     'najaf.org',
-  toronto:    'valieasr.org',
 };
 
 let cityId, offset = 0;
 
 export async function render(el) {
   cityId = localStorage.getItem("ih-city") || CONFIG.defaultCity;
+  if (!CONFIG.prayerCities.some(c => c.id === cityId)) cityId = CONFIG.defaultCity;
   offset = 0;
   injectCss();
   el.innerHTML = `

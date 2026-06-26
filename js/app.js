@@ -92,11 +92,30 @@ buildNav();
 go(routeFromHash(), { noHash: true });
 
 // --- Service worker (seamless auto-update) ----------------------------------
+// New deploy -> sw.js VERSION changes -> update detected -> new worker installs
+// and activates immediately -> controllerchange -> page reloads automatically.
+// We also poll for updates on focus and every 60s so a long-open app refreshes.
 if ("serviceWorker" in navigator && !location.search.includes("nosw")) {
-  window.addEventListener("load", () =>
-    navigator.serviceWorker.register("sw.js").catch(() => {}));
   let reloaded = false;
   navigator.serviceWorker.addEventListener("controllerchange", () => {
     if (reloaded) return; reloaded = true; location.reload();
+  });
+
+  window.addEventListener("load", async () => {
+    try {
+      const reg = await navigator.serviceWorker.register("sw.js");
+      // If an updated worker is waiting, tell it to take over now.
+      const promote = (w) => w && w.state === "installed" &&
+        navigator.serviceWorker.controller && w.postMessage?.("skipWaiting");
+      reg.addEventListener("updatefound", () => {
+        const w = reg.installing;
+        w && w.addEventListener("statechange", () => promote(w));
+      });
+      promote(reg.waiting);
+
+      const check = () => reg.update().catch(() => {});
+      setInterval(check, 60 * 1000);
+      document.addEventListener("visibilitychange", () => { if (!document.hidden) check(); });
+    } catch {}
   });
 }

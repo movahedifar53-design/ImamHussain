@@ -1,7 +1,11 @@
 // Imam Hussain Community — service worker.
-// Network-first for same-origin requests (code/data updates always land when
-// online), cache fallback for offline. Audio and external (YouTube) bypass.
-const CACHE = "ih-v1";
+// AUTO-UPDATE: bump VERSION on every deploy. A new VERSION changes this file,
+// so installed apps detect the update, activate immediately (skipWaiting), and
+// the page auto-reloads (see controllerchange handler in app.js).
+// Strategy: network-first for same-origin requests (content is always fresh
+// when online), cache fallback for offline. Audio/externals bypass.
+const VERSION = "2026-06-26-3";
+const CACHE = "ih-" + VERSION;
 const CORE = [
   "./", "index.html", "manifest.json",
   "config.js", "css/styles.css",
@@ -21,14 +25,17 @@ self.addEventListener("activate", (e) => {
   })());
 });
 
+// Allow the page to trigger an immediate activation.
+self.addEventListener("message", (e) => {
+  if (e.data === "skipWaiting") self.skipWaiting();
+});
+
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
-
-  // Only handle our own origin; let audio stream & externals go to network.
-  if (url.origin !== location.origin) return;
-  if (url.pathname.includes("/dua/audio/")) return;
+  if (url.origin !== location.origin) return;       // externals/fonts/youtube → network
+  if (url.pathname.includes("/dua/audio/")) return; // don't cache big audio
 
   e.respondWith((async () => {
     try {

@@ -15,7 +15,6 @@ export const CONFIG = {
   prayerCities: [
     { id: "birmingham", name: "Birmingham", data: "data/data_birmingham.json" },
     { id: "london",     name: "London",     data: "data/data_london.json" },
-    { id: "toronto",    name: "Toronto",    data: "data/data_toronto.json" },
   ],
   defaultCity: "birmingham",
 
@@ -30,14 +29,10 @@ export const CONFIG = {
   programsCsvUrl: "",            // <-- PASTE PUBLISHED CSV URL HERE
 
   // --- Live shrine stream ---------------------------------------------------
-  // YouTube video OR channel id for the Karbala live stream.
-  // Default = "Imam Hussain Live Stream" 24/7 channel (@imamhussainlivestream).
-  // The channel id auto-resolves to whatever is live now; the video id is a
-  // direct embed fallback. If a stream ends, the "Watch on YouTube" button in
-  // the Live tab always reaches the current broadcast.
-  liveYouTubeVideoId: "WMmTvTeS1AE",
-  liveYouTubeChannelId: "UCqFuFehXcgoOR_dc59ZGcEA",
-  liveYouTubeHandle: "imamhussainlivestream",
+  // In-app video player (no YouTube). Paste a direct video stream URL you trust
+  // (HLS .m3u8 preferred; .mp4 also works) to enable the Live tab. Leave blank
+  // to show a tasteful "coming soon" placeholder.
+  liveStreamUrl: "",
   liveTitle: "Imam Hussain Holy Shrine — Karbala (Live)",
 
   // --- Dua & Ziyarat --------------------------------------------------------
