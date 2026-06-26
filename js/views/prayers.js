@@ -82,7 +82,7 @@ function injectCss() {
       padding:7px 16px;border-radius:999px;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s}
     .city-btn.active{background:var(--gold);border-color:var(--gold);color:var(--green-900)}
     .pt-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
-    .pt-date{font-size:1.15rem;font-weight:700}
+    .pt-date{font-family:var(--font-display);font-size:1.45rem;font-weight:700}
     .navd{width:38px;height:38px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border-2);
       color:var(--gold);font-size:1.3rem;cursor:pointer}
     .pt-rows{margin-top:8px}

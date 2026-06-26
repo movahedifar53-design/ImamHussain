@@ -58,11 +58,11 @@ function injectCss() {
   if (document.getElementById("cal-css")) return;
   const s=document.createElement("style"); s.id="cal-css";
   s.textContent=`
-    .cal-today{text-align:center;padding:24px}
-    .cal-hijri{font-size:2rem;font-weight:800;color:var(--gold);margin-top:4px}
+    .cal-today{text-align:center;padding:26px 24px}
+    .cal-hijri{font-family:var(--font-display);font-size:2.7rem;font-weight:700;color:var(--red-bright);margin-top:4px;line-height:1.05}
     .up-row{display:flex;align-items:center;gap:14px;padding:14px}
-    .up-date{flex:0 0 52px;text-align:center;border:1.5px solid;border-radius:12px;padding:6px 0}
-    .up-d{font-size:1.4rem;font-weight:800;line-height:1}
+    .up-date{flex:0 0 54px;text-align:center;border:1.5px solid;border-radius:12px;padding:7px 0}
+    .up-d{font-family:var(--font-display);font-size:1.6rem;font-weight:700;line-height:1}
     .up-m{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim)}
     .up-title{font-weight:600;font-size:.98rem;line-height:1.35}
     .up-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border:1px solid;border-radius:6px;padding:1px 7px}

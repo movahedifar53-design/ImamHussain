@@ -12,10 +12,10 @@ export async function loadEvents() {
 }
 
 export const TYPE_META = {
-  martyrdom: { label: "Martyrdom", color: "#C96A6A", glyph: "🕯️" },
-  birth:     { label: "Birth",     color: "#6FB58A", glyph: "🌙" },
-  eid:       { label: "Eid",       color: "#D4AF37", glyph: "✨" },
-  event:     { label: "Event",     color: "#8AA6D4", glyph: "📿" },
+  martyrdom: { label: "Martyrdom", color: "#E63946", glyph: "🕯️" },
+  birth:     { label: "Birth",     color: "#EBE6DD", glyph: "🌙" },
+  eid:       { label: "Eid",       color: "#E0A33A", glyph: "✨" },
+  event:     { label: "Event",     color: "#9AA0A6", glyph: "📿" },
 };
 
 const off = () => CONFIG.hijriDayOffset || 0;

@@ -18,6 +18,7 @@ export async function render(el) {
       <div class="hero-crest">۞</div>
       <h1 class="hero-name">${CONFIG.centreName}</h1>
       <p class="hero-tag muted">${CONFIG.centreNameFull}</p>
+      <div class="hero-rule"></div>
     </section>
 
     <div class="card next-prayer mt16" id="npCard">
@@ -26,15 +27,11 @@ export async function render(el) {
 
     <div class="card date-card mt16" id="dateCard"></div>
 
-    <div class="section-title">Explore</div>
-    <div class="tile-grid" id="homeTiles"></div>
-
     <div class="section-title">Next program</div>
     <div id="homeProgram"><div class="card faint center">Loading…</div></div>
   `;
 
   injectHomeCss();
-  renderTiles(el);
 
   // --- date + today's events ---
   const now = new Date();
@@ -109,34 +106,20 @@ function emptyPrograms() {
   return `<div class="card faint center" onclick="App.go('programs')" style="cursor:pointer">No upcoming programs yet. Tap to view all.</div>`;
 }
 
-const TILES = [
-  { route:"prayers",  icon:"prayer",  name:"Prayer Times", desc:"Daily timings" },
-  { route:"calendar", icon:"calendar",name:"Shia Calendar",desc:"Important days" },
-  { route:"dua",      icon:"dua",     name:"Dua & Ziyarat",desc:"Supplications" },
-  { route:"live",     icon:"live",    name:"Live Shrine",  desc:"Karbala stream" },
-  { route:"library",  icon:"library", name:"Library",      desc:"Books & texts" },
-  { route:"qibla",    icon:"qibla",   name:"Qibla",        desc:"Find direction" },
-];
-
-function renderTiles(el) {
-  el.querySelector("#homeTiles").innerHTML = TILES.map(t=>`
-    <div class="tile" onclick="App.go('${t.route}')">
-      <div class="ico">${ICON[t.icon]}</div>
-      <div class="t-name">${t.name}</div>
-      <div class="t-desc">${t.desc}</div>
-    </div>`).join("");
-}
-
 function injectHomeCss() {
   if (document.getElementById("home-css")) return;
   const s = document.createElement("style"); s.id = "home-css";
   s.textContent = `
-    .hero { text-align:center; padding:26px 18px; }
-    .hero-crest { font-size:2.4rem; color:var(--gold); line-height:1; }
-    .hero-name { font-size:1.7rem; font-weight:800; letter-spacing:.3px; margin-top:6px; }
-    .hero-tag { font-size:.85rem; margin-top:2px; }
-    .np-name { font-size:1.5rem; font-weight:800; color:var(--gold); }
-    .np-time { font-size:1.05rem; color:var(--text-dim); margin-top:-2px; }
+    .hero { text-align:center; padding:30px 18px 28px; position:relative; }
+    .hero-crest { font-size:2.6rem; color:var(--red-bright); line-height:1;
+      filter:drop-shadow(0 3px 14px rgba(230,57,70,.45)); }
+    .hero-name { font-family:var(--font-display); font-size:2.3rem; font-weight:700;
+      letter-spacing:.4px; margin-top:8px; line-height:1.05; }
+    .hero-tag { font-size:.82rem; margin-top:8px; letter-spacing:.04em; }
+    .hero-rule { width:64px; height:2px; margin:14px auto 0;
+      background:linear-gradient(90deg,transparent,var(--red-bright),transparent); }
+    .np-name { font-family:var(--font-display); font-size:1.9rem; font-weight:700; color:var(--red-bright); line-height:1; }
+    .np-time { font-size:1rem; color:var(--text-dim); margin-top:4px; }
     .np-cd { font-size:1.7rem; font-weight:800; font-variant-numeric:tabular-nums; }
   `;
   document.head.appendChild(s);

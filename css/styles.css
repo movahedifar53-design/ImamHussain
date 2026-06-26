@@ -1,35 +1,49 @@
 /* =====================================================================
-   IMAM HUSSAIN COMMUNITY APP — DESIGN SYSTEM
+   IMAM HUSSAIN COMMUNITY APP — DESIGN SYSTEM  (black · red · white)
    ===================================================================== */
 
 :root {
-  /* Brand */
-  --green-900: #0A1F12;
-  --green-800: #0D2818;
-  --green-700: #123322;
-  --green-600: #1B3A2D;
-  --green-500: #245040;
-  --gold:      #D4AF37;
-  --gold-soft: #E6C964;
-  --gold-dim:  rgba(212,175,55,0.18);
+  /* Brand — Hussaini red on black */
+  --red:        #B5121B;   /* deep crimson  */
+  --red-bright: #E63946;   /* highlight red */
+  --red-deep:   #7A0C12;   /* shadow red    */
+  --red-soft:   rgba(230,57,70,0.13);
+  --red-line:   rgba(230,57,70,0.38);
+
+  /* Neutrals (charcoal → black) */
+  --green-900: #08080A;   /* legacy aliases kept for view code */
+  --green-800: #0D0D10;
+  --green-700: #151519;
+  --green-600: #1B1B20;
+  --green-500: #232329;
+
+  /* Accent aliases (existing markup references --gold*) → now red */
+  --gold:      #E63946;
+  --gold-soft: #F2949B;
+  --gold-dim:  rgba(230,57,70,0.13);
 
   /* Surfaces */
-  --bg:        #0A1F12;
-  --surface:   rgba(255,255,255,0.05);
-  --surface-2: rgba(255,255,255,0.08);
-  --border:    rgba(212,175,55,0.16);
-  --border-2:  rgba(255,255,255,0.08);
+  --bg:        #08080A;
+  --surface:   rgba(255,255,255,0.035);
+  --surface-2: rgba(255,255,255,0.065);
+  --border:    rgba(230,57,70,0.18);
+  --border-2:  rgba(255,255,255,0.07);
 
   /* Text */
-  --text:      #F4F1E8;
-  --text-dim:  #9DB3A4;
-  --text-faint:#6E8478;
+  --text:      #F5F2EC;
+  --text-dim:  #A8A29B;
+  --text-faint:#6E6A64;
+
+  /* Type */
+  --font-body:    'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-ar:      'Amiri', 'Scheherazade New', 'Traditional Arabic', serif;
 
   /* System */
   --radius:    18px;
   --radius-sm: 12px;
-  --shadow:    0 10px 40px rgba(0,0,0,0.45);
-  --nav-h:     64px;
+  --shadow:    0 16px 50px rgba(0,0,0,0.6);
+  --nav-h:     66px;
   --maxw:      460px;
   --ease:      cubic-bezier(.4,0,.2,1);
 
@@ -38,22 +52,22 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
 html, body { height: 100%; }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-family: var(--font-body);
   background:
-    radial-gradient(1200px 600px at 50% -10%, var(--green-700), transparent 60%),
+    radial-gradient(1100px 540px at 50% -8%, rgba(150,16,24,0.42), transparent 62%),
+    radial-gradient(900px 600px at 50% 120%, rgba(120,12,18,0.18), transparent 60%),
     var(--bg);
   background-attachment: fixed;
   color: var(--text);
   -webkit-user-select: none; user-select: none;
   overscroll-behavior-y: none;
   line-height: 1.5;
+  letter-spacing: .1px;
 }
 
-/* ---- App frame ----------------------------------------------------- */
 #app {
   max-width: var(--maxw);
   margin: 0 auto;
@@ -66,30 +80,32 @@ body {
 /* ---- App bar ------------------------------------------------------- */
 .appbar {
   position: sticky; top: 0; z-index: 30;
-  padding: calc(var(--safe-top) + 12px) 18px 12px;
+  padding: calc(var(--safe-top) + 14px) 18px 12px;
   display: flex; align-items: center; gap: 12px;
-  background: linear-gradient(180deg, rgba(10,31,18,0.96), rgba(10,31,18,0.78) 70%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: linear-gradient(180deg, rgba(8,8,10,0.96), rgba(8,8,10,0.72) 70%, transparent);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
 }
-.appbar .title { font-size: 1.15rem; font-weight: 700; letter-spacing: .2px; }
+.appbar .title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700; letter-spacing: .3px;
+}
 .appbar .back {
-  width: 36px; height: 36px; border-radius: 50%;
+  width: 38px; height: 38px; border-radius: 50%;
   display: grid; place-items: center;
   background: var(--surface); border: 1px solid var(--border-2);
-  color: var(--gold); font-size: 1.1rem; cursor: pointer;
+  color: var(--red-bright); font-size: 1.2rem; cursor: pointer;
 }
-.appbar .spacer { flex: 1; }
 .appbar .back[hidden] { display: none; }
+.appbar .spacer { flex: 1; }
 [hidden] { display: none !important; }
 
 /* ---- View container ------------------------------------------------ */
 #view {
   flex: 1;
-  padding: 4px 16px calc(var(--nav-h) + var(--safe-bottom) + 24px);
-  animation: viewIn .28s var(--ease);
+  padding: 6px 16px calc(var(--nav-h) + var(--safe-bottom) + 26px);
+  animation: viewIn .3s var(--ease);
 }
-@keyframes viewIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes viewIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
 /* ---- Bottom navigation -------------------------------------------- */
 .navbar {
@@ -98,19 +114,23 @@ body {
   height: calc(var(--nav-h) + var(--safe-bottom));
   padding-bottom: var(--safe-bottom);
   display: grid; grid-template-columns: repeat(5, 1fr);
-  background: rgba(9,26,16,0.92);
-  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  background: rgba(10,10,12,0.94);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border);
 }
 .navbtn {
-  background: none; border: none; cursor: pointer;
+  background: none; border: none; cursor: pointer; position: relative;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: 3px; color: var(--text-faint); font-size: .66rem; font-weight: 600;
-  transition: color .2s var(--ease);
+  gap: 4px; color: var(--text-faint); font-size: .65rem; font-weight: 600;
+  letter-spacing: .02em; transition: color .2s var(--ease);
 }
 .navbtn svg { width: 23px; height: 23px; stroke: currentColor; fill: none; stroke-width: 1.8; }
-.navbtn.active { color: var(--gold); }
-.navbtn.active svg { filter: drop-shadow(0 2px 8px rgba(212,175,55,.4)); }
+.navbtn.active { color: var(--red-bright); }
+.navbtn.active::before {
+  content: ""; position: absolute; top: 0; width: 26px; height: 3px; border-radius: 0 0 4px 4px;
+  background: var(--red-bright); box-shadow: 0 0 12px var(--red-bright);
+}
+.navbtn.active svg { filter: drop-shadow(0 2px 9px rgba(230,57,70,.5)); }
 
 /* ---- Cards & primitives ------------------------------------------- */
 .card {
@@ -119,35 +139,45 @@ body {
   border-radius: var(--radius);
   padding: 18px;
 }
-.card.gold { border-color: var(--border); background: linear-gradient(160deg, rgba(212,175,55,.10), var(--surface)); }
+.card.gold {
+  border-color: var(--border);
+  background:
+    linear-gradient(155deg, rgba(230,57,70,0.10), rgba(255,255,255,0.02) 55%),
+    var(--surface);
+}
 
 .section-title {
-  font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--gold); margin: 22px 4px 12px;
+  font-size: .72rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--red-bright); margin: 26px 4px 12px;
+  display: flex; align-items: center; gap: 10px;
 }
+.section-title::after { content:""; flex:1; height:1px; background: linear-gradient(90deg,var(--red-line),transparent); }
+
 .muted { color: var(--text-dim); }
 .faint { color: var(--text-faint); }
 .center { text-align: center; }
 
 .pill {
   display: inline-flex; align-items: center; gap: 6px;
-  background: var(--gold-dim); color: var(--gold-soft);
+  background: var(--red-soft); color: var(--gold-soft);
   border: 1px solid var(--border);
-  padding: 4px 12px; border-radius: 999px; font-size: .76rem; font-weight: 600;
+  padding: 5px 13px; border-radius: 999px; font-size: .76rem; font-weight: 600;
 }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  background: var(--gold); color: var(--green-900);
-  border: none; border-radius: 12px; padding: 13px 18px;
+  background: linear-gradient(160deg, var(--red-bright), var(--red));
+  color: #fff;
+  border: none; border-radius: 13px; padding: 14px 18px;
   font-size: .95rem; font-weight: 700; cursor: pointer;
+  box-shadow: 0 8px 22px rgba(181,18,27,0.34);
   transition: transform .12s var(--ease), filter .2s;
 }
 .btn:active { transform: scale(.97); }
-.btn.ghost { background: transparent; color: var(--gold); border: 1.5px solid var(--gold); }
+.btn.ghost { background: transparent; color: var(--red-bright); border: 1.5px solid var(--red-line); box-shadow: none; }
 .btn.block { width: 100%; }
 
-/* ---- Grid of feature tiles ---------------------------------------- */
+/* ---- Feature tiles ------------------------------------------------- */
 .tile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .tile {
   background: var(--surface); border: 1px solid var(--border-2);
@@ -156,24 +186,21 @@ body {
   transition: transform .15s var(--ease), border-color .2s, background .2s;
 }
 .tile:active { transform: scale(.97); }
-.tile .ico {
-  width: 44px; height: 44px; border-radius: 12px;
-  display: grid; place-items: center;
-  background: var(--gold-dim); color: var(--gold);
-}
+.tile .ico { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center;
+  background: var(--red-soft); color: var(--red-bright); }
 .tile .ico svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 1.8; }
 .tile .t-name { font-weight: 700; font-size: 1rem; }
 .tile .t-desc { font-size: .78rem; color: var(--text-dim); }
 
 /* ---- Loading / empty ---------------------------------------------- */
 .spinner {
-  width: 32px; height: 32px; margin: 40px auto; border-radius: 50%;
-  border: 3px solid var(--border); border-top-color: var(--gold);
+  width: 32px; height: 32px; margin: 44px auto; border-radius: 50%;
+  border: 3px solid var(--border-2); border-top-color: var(--red-bright);
   animation: spin 1s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
-.empty { text-align: center; color: var(--text-dim); padding: 48px 20px; }
-.empty .em-ico { font-size: 2.4rem; margin-bottom: 10px; opacity: .5; }
+.empty { text-align: center; color: var(--text-dim); padding: 50px 20px; }
+.empty .em-ico { font-size: 2.4rem; margin-bottom: 10px; opacity: .55; }
 
 /* ---- Utilities ----------------------------------------------------- */
 .row { display: flex; align-items: center; gap: 12px; }
@@ -182,8 +209,6 @@ body {
 .mt8{margin-top:8px}.mt16{margin-top:16px}.mt24{margin-top:24px}
 .divider { height: 1px; background: var(--border-2); margin: 16px 0; }
 
-/* Arabic / RTL helpers */
-.ar { font-family: 'Traditional Arabic','Scheherazade New','Amiri',serif; direction: rtl; line-height: 2; }
+.ar { font-family: var(--font-ar); direction: rtl; line-height: 2; }
 
-/* Hide scrollbars but keep scroll */
 ::-webkit-scrollbar { width: 0; height: 0; }
