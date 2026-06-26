@@ -37,7 +37,7 @@ export const CONFIG = {
       title: "Dua Kumayl",
       location: "",
       details: "Weekly recitation of Dua Kumayl. All are welcome.",
-      image: "",
+      image: "assets/posters/DuaKumayl.jpg",
     },
   ],
 

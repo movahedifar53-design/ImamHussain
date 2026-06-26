@@ -54,6 +54,10 @@
 * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html, body { height: 100%; }
 
+/* App icons are all stroke-based; default to outline so they never fill black.
+   Specific rules (.navbtn svg, .tile .ico svg, .pill svg…) override the size. */
+svg { fill: none; stroke: currentColor; stroke-width: 1.8; width: 18px; height: 18px; }
+
 body {
   font-family: var(--font-body);
   background:
@@ -163,6 +167,7 @@ body {
   border: 1px solid var(--border);
   padding: 5px 13px; border-radius: 999px; font-size: .76rem; font-weight: 600;
 }
+.pill svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; flex: 0 0 auto; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
